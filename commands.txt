@@ -1,0 +1,8 @@
+terraform init --upgrade
+
+az role assignment create --assignee 826895f8-a40e-4de4-84c3-eeb76908aa12 --role "Contributor" --scope /subscriptions/1075a6d5-9637-41be-9e7a-38ea01eb2d86
+
+terraform state rm azurerm_subnet_network_security_group_association.public
+terraform state rm azurerm_subnet_network_security_group_association.private
+
+terraform import azurerm_databricks_workspace.dbxWorkspace "/subscriptions/1075a6d5-9637-41be-9e7a-38ea01eb2d86/resourceGroups/azure-dbx-resource-group/providers/Microsoft.Databricks/workspaces/azure-dbx-workspace-dev"
